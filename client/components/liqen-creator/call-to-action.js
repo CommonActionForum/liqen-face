@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import ProgressBar from './progress-bar'
 
 const Container = styled.div`
   display: flex;
@@ -14,15 +15,24 @@ const Popup = styled.div`
 
 export default class CallToAction extends React.Component {
   render () {
+    const total = this.props.answer
+      .filter(a => a.required)
+      .length
+
+    const completed = this.props.answer
+      .filter(a => a.required)
+      .filter(a => a.annotations > 0)
+      .length
+
     return (
       <div>
         <Container>
           <div className='progress mr-2' style={{width: '130px', height: '10px'}}>
-            <div className='progress-bar' />
+            <ProgressBar completed={completed} total={total} />
           </div>
           <button className='btn btn-primary'>
             Create a Liqen
-        </button>
+          </button>
         </Container>
         <Popup>Popup with explanation</Popup>
       </div>
