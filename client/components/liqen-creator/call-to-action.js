@@ -20,10 +20,7 @@ const Popup = styled.div`
   top: 0;
   right: 0;
   position: absolute;
-  border: 1px solid #333;
-  border-radius: 5px;
   margin-top: 10px;
-  padding: 15px;
 `
 
 export default class CallToAction extends React.Component {
@@ -48,7 +45,35 @@ export default class CallToAction extends React.Component {
           </button>
         </BarContainer>
         <PopupContainer>
-          <Popup>Popup with explanation</Popup>
+          <Popup>
+            <div className='card'>
+              <div className='card-block'>
+                <h4 className='card-title'>Create a Liqen</h4>
+                <div className='card-text'>To create a Liqen, create more annotations before</div>
+              </div>
+              <div className='list-group list-group-flush'>
+                <div className='list-group-item'>
+                  <div className='mr-auto'>
+                    <span>Place of origin</span>
+                    <em>(required)</em>
+                  </div>
+                  <div>
+                    <i className='fa fa-circle-o' aria-hidden='true'></i>
+                  </div>
+                </div>
+
+                <div className='list-group-item'>
+                  <div className='mr-auto'>
+                    <span>Place of origin fioehjoeif eoifjeof iejoif jioefje fie</span>
+                    <em>(required)</em>
+                  </div>
+                  <div>
+                    <i className='fa fa-check-circle' aria-hidden='true'></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Popup>
         </PopupContainer>
       </Container>
     )
