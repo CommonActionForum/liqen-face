@@ -4,13 +4,26 @@ import styled from 'styled-components'
 import ProgressBar from './progress-bar'
 
 const Container = styled.div`
+  position: relative;
+`
+
+const BarContainer = styled.div`
   display: flex;
   align-items: center;
 `
 
+const PopupContainer = styled.div`
+  position: relative;
+`
+
 const Popup = styled.div`
-  display: none;
+  top: 0;
+  right: 0;
   position: absolute;
+  border: 1px solid #333;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 15px;
 `
 
 export default class CallToAction extends React.Component {
@@ -25,17 +38,19 @@ export default class CallToAction extends React.Component {
       .length
 
     return (
-      <div>
-        <Container>
-          <div className='progress mr-2' style={{width: '130px', height: '10px'}}>
+      <Container>
+        <BarContainer>
+          <div className='progress mr-3' style={{width: '130px', height: '10px'}}>
             <ProgressBar completed={completed} total={total} />
           </div>
           <button className='btn btn-primary'>
             Create a Liqen
           </button>
-        </Container>
-        <Popup>Popup with explanation</Popup>
-      </div>
+        </BarContainer>
+        <PopupContainer>
+          <Popup>Popup with explanation</Popup>
+        </PopupContainer>
+      </Container>
     )
   }
 }
