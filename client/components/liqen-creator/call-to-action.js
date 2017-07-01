@@ -52,25 +52,29 @@ export default class CallToAction extends React.Component {
                 <div className='card-text'>To create a Liqen, create more annotations before</div>
               </div>
               <div className='list-group list-group-flush'>
-                <div className='list-group-item'>
-                  <div className='mr-auto'>
-                    <span>Place of origin</span>
-                    <em>(required)</em>
-                  </div>
-                  <div>
-                    <i className='fa fa-circle-o' aria-hidden='true'></i>
-                  </div>
-                </div>
-
-                <div className='list-group-item'>
-                  <div className='mr-auto'>
-                    <span>Place of origin fioehjoeif eoifjeof iejoif jioefje fie</span>
-                    <em>(required)</em>
-                  </div>
-                  <div>
-                    <i className='fa fa-check-circle' aria-hidden='true'></i>
-                  </div>
-                </div>
+                {
+                  this.props.answer.map(a => (
+                    <div className='list-group-item'>
+                      <div className='mr-auto'>
+                        <span>{a.tag + ' '}</span>
+                        {a.required && <em>(required)</em>}
+                      </div>
+                      <div>
+                        {
+                          a.annotations > 0
+                          ? <i
+                              className='fa fa-check-circle'
+                              aria-hidden={true}
+                            />
+                          : <i
+                              className='fa fa-circle-o'
+                              aria-hidden={true}
+                            />
+                        }
+                      </div>
+                    </div>
+                  ))
+                }
               </div>
             </div>
           </Popup>
