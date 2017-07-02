@@ -31,10 +31,26 @@ export default class LiqenCreatorModal extends React.Component {
           {
             this.props.answer.map(
               a => (
-                <li className='list-group-item'>
-                  <div className='mr-auto'>{a.tag}</div>
+                <li className='list-group-item d-block'>
+                  <div className='d-flex'>
+                    <div className='mr-auto'>{a.tag}</div>
+                    <div>
+                      <i className='fa fa-angle-down' aria-hidden="true" />
+                    </div>
+                  </div>
                   <div>
-                    <i className='fa fa-angle-down' aria-hidden="true"></i>
+                    <div className='form-check'>
+                      <label className='form-check-label'>
+                        <input className='form-check-input' type='checkbox' />
+                        <span> Lorem ipsum</span>
+                      </label>
+                    </div>
+                    <div className='form-check'>
+                      <label className='form-check-label'>
+                        <input className='form-check-input' type='checkbox' />
+                        <span> Lorem ipsum</span>
+                      </label>
+                    </div>
                   </div>
                 </li>
               )
