@@ -17,6 +17,10 @@ const PopupContainer = styled.div`
 `
 
 const Popup = styled.div`
+  opacity: ${props => props.visible ? 1 : 0};
+  visibility: ${props => props.visible ? 'visible' : 'hidden'};
+  transition: opacity 0.5s ease,
+              visibility 0.5s;
   top: 0;
   right: 0;
   position: absolute;
@@ -24,6 +28,21 @@ const Popup = styled.div`
 `
 
 export default class CallToAction extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {showPopup: false}
+    this.handleMouseOver = this.handleMouseOver.bind(this)
+    this.handleMouseOut = this.handleMouseOut.bind(this)
+  }
+
+  handleMouseOver () {
+    this.setState({showPopup: true})
+  }
+
+  handleMouseOut () {
+    this.setState({showPopup: false})
+  }
+
   render () {
     const total = this.props.answer
       .filter(a => a.required)
@@ -36,7 +55,7 @@ export default class CallToAction extends React.Component {
 
     return (
       <Container>
-        <BarContainer>
+        <BarContainer onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}>
           <div className='progress mr-3' style={{width: '130px', height: '10px'}}>
             <ProgressBar completed={completed} total={total} />
           </div>
@@ -45,11 +64,10 @@ export default class CallToAction extends React.Component {
           </button>
         </BarContainer>
         <PopupContainer>
-          <Popup>
+          <Popup visible={this.state.showPopup}>
             <div className='card'>
               <div className='card-block'>
-                <h4 className='card-title'>Create a Liqen</h4>
-                <div className='card-text'>To create a Liqen, create more annotations before</div>
+                <div className='card-text'>Create annotations with the following tags before creating a Liqen</div>
               </div>
               <div className='list-group list-group-flush'>
                 {
