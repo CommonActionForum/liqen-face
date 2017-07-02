@@ -3,14 +3,19 @@ import PropTypes from 'prop-types'
 
 const Modal = ({ children, show }) => (
   <div>
-    <div className={`modal fade ${show ? 'show' : ''}`} style={{display: show ? 'block' : 'none'}}>
+    <div
+      className={`modal fade ${show ? 'show' : ''}`}
+      style={{display: show ? 'block' : 'none'}}
+    >
       <div className='modal-dialog'>
         <div className='modal-content'>
           {children}
         </div>
       </div>
     </div>
-    <div className={`modal-backdrop fade ${show ? 'show' : ''}`} />
+    <div
+      className={`modal-backdrop fade ${show ? 'show' : ''}`}
+    />
   </div>
 )
 
