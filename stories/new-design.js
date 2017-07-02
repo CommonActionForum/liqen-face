@@ -69,7 +69,39 @@ class InteractiveCTA extends React.Component {
 
 storiesOf('New design', module)
   .add('Liqen Creator Modal', () => (
-    <LiqenCreatorModal />
+    <LiqenCreatorModal answer={[
+      {
+        tag: 'Tag 1',
+        annotations: [
+          {
+            ref: 'a1',
+            fragment: 'Annotation 1'
+          }
+        ]
+      },
+      {
+        tag: 'Tag 2',
+        annotations: [
+          {
+            ref: 'a2',
+            fragment: 'Annotation 2'
+          }
+        ]
+      },
+      {
+        tag: 'Tag 3',
+        annotations: [
+          {
+            ref: 'a3',
+            fragment: 'Annotation 3'
+          },
+          {
+            ref: 'a4',
+            fragment: 'Annotation 4'
+          }
+        ]
+      }
+    ]}/>
   ))
   .add('Liqen Call to Action', () => (
     <InteractiveCTA />

@@ -25,8 +25,22 @@ export default class LiqenCreatorModal extends React.Component {
           </button>
         </div>
         <div className='modal-body'>
-          <p>Lorem ipsum</p>
+          Choose annotations to be part of your answer
         </div>
+        <ul className='list-group list-group-flush'>
+          {
+            this.props.answer.map(
+              a => (
+                <li className='list-group-item'>
+                  <div className='mr-auto'>{a.tag}</div>
+                  <div>
+                    <i className='fa fa-angle-down' aria-hidden="true"></i>
+                  </div>
+                </li>
+              )
+            )
+          }
+        </ul>
         <div className='modal-footer'>
           <button type='button' className='btn btn-primary'>
             Send Liqen
