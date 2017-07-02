@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Modal = ({ children, show }) => (
-  <div>
+  <div className='modal-open'>
     <div
       className={`modal fade ${show ? 'show' : ''}`}
       style={{display: show ? 'block' : 'none'}}
@@ -20,6 +20,19 @@ const Modal = ({ children, show }) => (
 )
 
 export default class LiqenCreatorModal extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      opened: -1
+    }
+  }
+
+  open (i) {
+    this.setState(prevState => ({
+      opened: prevState.opened === i ? -1 : i
+    }))
+  }
+
   render () {
     return (
       <Modal show>
@@ -34,32 +47,34 @@ export default class LiqenCreatorModal extends React.Component {
         </div>
         <ul className='list-group list-group-flush'>
           {
-            this.props.answer.map(
-              a => (
-                <li className='list-group-item d-block'>
-                  <div className='d-flex'>
-                    <div className='mr-auto'>{a.tag}</div>
-                    <div>
-                      <i className='fa fa-angle-down' aria-hidden="true" />
-                    </div>
-                  </div>
+            this.props.answer.map((a, i) => (
+              <li className='list-group-item d-block' key={i} >
+                <div className='d-flex' onClick={() => this.open(i)}>
+                  <div className='mr-auto'>{a.tag}</div>
                   <div>
-                    <div className='form-check'>
-                      <label className='form-check-label'>
-                        <input className='form-check-input' type='checkbox' />
-                        <span> Lorem ipsum</span>
-                      </label>
-                    </div>
-                    <div className='form-check'>
-                      <label className='form-check-label'>
-                        <input className='form-check-input' type='checkbox' />
-                        <span> Lorem ipsum</span>
-                      </label>
-                    </div>
+                    <i
+                      className={`fa ${i === this.state.opened ? 'fa-angle-up' : 'fa-angle-down'}`}
+                      aria-hidden='true'
+                    />
                   </div>
-                </li>
-              )
-            )
+                </div>
+                <div>
+                  {
+                    i === this.state.opened && a.annotations.map(ann => (
+                      <div className='form-check' key={ann.ref}>
+                        <label className='form-check-label'>
+                          <input
+                            className='form-check-input'
+                            type='checkbox'
+                          />
+                          <span>{' ' + ann.fragment}</span>
+                        </label>
+                      </div>
+                    ))
+                  }
+                </div>
+              </li>
+            ))
           }
         </ul>
         <div className='modal-footer'>
