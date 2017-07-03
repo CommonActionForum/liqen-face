@@ -10,21 +10,23 @@
   <link rel="stylesheet" type="text/css" href="/static/style.css">
 </head>
 <body>
-  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-    <a class="navbar-brand" href="/">
-      <img src="/static/logo-inverse-h40.png" width="56" height="20" class="d-inline-block align-top my-1">
-    </a>
-  </nav>
-  <div class="container mt-4" id="react-root">
-    <div class="row">
-      <aside class='hidden-md-down col-lg-4 flex-last'>
-        Loading question
-      </aside>
-      <div class="col-lg-8 col-xl-7">
-        <header>
-          <h1 class="article-title"><%= article.title %></h1>
-        </header>
-        <main class="article-body" id="article-body">Loading article</main>
+  <div id="react-root">
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+      <a class="navbar-brand" href="/">
+        <img src="/static/logo-inverse-h40.png" width="56" height="20" class="d-inline-block align-top my-1">
+      </a>
+    </nav>
+    <div class="container mt-4">
+      <div class="row">
+        <aside class='hidden-md-down col-lg-4 flex-last'>
+          Loading question
+        </aside>
+        <div class="col-lg-8 col-xl-7">
+          <header>
+            <h1 class="article-title"><%= article.title %></h1>
+          </header>
+          <main class="article-body" id="article-body">Loading article</main>
+        </div>
       </div>
     </div>
     <script>

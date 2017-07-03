@@ -46,32 +46,46 @@ export class Annotate extends React.Component {
     } = this.props
 
     return (
-      <div className='row'>
-        <aside className='hidden-md-down col-lg-4 flex-last'>
-          <h3 className='h6 text-uppercase text-muted'>Create your Liqen (your Answer)</h3>
-          <LiqenCreator
-            question={question}
-            answer={answer}
-            onSubmit={onCreateLiqen}
-            onAddAnnotation={onAddAnnotationToLiqen}
-            onRemoveAnnotation={onRemoveAnnotationToLiqen}
-          />
-          <MultiList
-            annotations={annotations}
-            liqens={liqens}
-          />
-        </aside>
-        <div className='col-lg-8 col-xl-7'>
-          <header>
-            <h1 className="article-title">{article.title}</h1>
-          </header>
-          <main className='article-body'>
-            <Article
-              body={this.state.articleBody}
-              tags={tags}
-              onCreateAnnotation={onCreateAnnotation}
+      <div>
+        <nav className='navbar navbar-toggleable-md navbar-light bg-faded'>
+          <a className='navbar-brand' href='/'>
+            <img
+              src='/static/logo-inverse-h40.png'
+              width='56'
+              height='20'
+              className='d-inline-block align-top my-1'
             />
-          </main>
+          </a>
+        </nav>
+        <div className='container mt-4'>
+          <div className='row'>
+            <aside className='hidden-md-down col-lg-4 flex-last'>
+              <h3 className='h6 text-uppercase text-muted'>Create your Liqen (your Answer)</h3>
+              <LiqenCreator
+                question={question}
+                answer={answer}
+                onSubmit={onCreateLiqen}
+                onAddAnnotation={onAddAnnotationToLiqen}
+                onRemoveAnnotation={onRemoveAnnotationToLiqen}
+              />
+              <MultiList
+                annotations={annotations}
+                liqens={liqens}
+              />
+            </aside>
+            <div className='col-lg-8 col-xl-7'>
+              <header>
+                <h1 className="article-title">{article.title}</h1>
+              </header>
+              <main className='article-body'>
+                <Article
+                  body={this.state.articleBody}
+                  tags={tags}
+                  onCreateAnnotation={onCreateAnnotation}
+                />
+              </main>
+            </div>
+          </div>
         </div>
       </div>
     )
