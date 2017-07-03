@@ -69,39 +69,49 @@ class InteractiveCTA extends React.Component {
 
 storiesOf('New design', module)
   .add('Liqen Creator Modal', () => (
-    <LiqenCreatorModal answer={[
-      {
-        tag: 'Tag 1',
-        annotations: [
-          {
-            ref: 'a1',
-            fragment: 'Annotation 1'
-          }
-        ]
-      },
-      {
-        tag: 'Tag 2',
-        annotations: [
-          {
-            ref: 'a2',
-            fragment: 'Annotation 2'
-          }
-        ]
-      },
-      {
-        tag: 'Tag 3',
-        annotations: [
-          {
-            ref: 'a3',
-            fragment: 'Annotation 3'
-          },
-          {
-            ref: 'a4',
-            fragment: 'Annotation 4'
-          }
-        ]
-      }
-    ]}/>
+    <LiqenCreatorModal
+      answer={[
+        {
+          tag: 'Tag 1',
+          annotations: [
+            {
+              ref: 'a1',
+              fragment: 'Annotation 1',
+              active: true
+            }
+          ]
+        },
+        {
+          tag: 'Tag 2',
+          annotations: [
+            {
+              ref: 'a2',
+              fragment: 'Annotation 2',
+              active: false
+            }
+          ]
+        },
+        {
+          tag: 'Tag 3',
+          annotations: [
+            {
+              ref: 'a3',
+              fragment: 'Annotation 3',
+              active: true
+            },
+            {
+              ref: 'a4',
+              fragment: 'Annotation 4',
+              active: false
+            }
+          ]
+        }
+      ]}
+      onSubmit={action('submit Liqen')}
+      onCancel={action('cancel Liqen')}
+      onAdd={action('add annotation to Liqen')}
+      onRemove={action('remove annotation from Liqen')}
+    />
   ))
   .add('Liqen Call to Action', () => (
     <InteractiveCTA />

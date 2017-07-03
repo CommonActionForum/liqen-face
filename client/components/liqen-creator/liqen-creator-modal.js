@@ -33,12 +33,25 @@ export default class LiqenCreatorModal extends React.Component {
     }))
   }
 
+  change (ref, activate) {
+    if (activate) {
+      this.props.onAdd(ref)
+    } else {
+      this.props.onRemove(ref)
+    }
+  }
+
   render () {
     return (
       <Modal show>
         <div className='modal-header'>
           <h5 className='modal-title'>Create a Liqen</h5>
-          <button type="button" className="close" aria-label="Close">
+          <button
+            type="button"
+            className="close"
+            aria-label="Close"
+            onClick={() => this.props.onCancel()}
+          >
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -66,6 +79,8 @@ export default class LiqenCreatorModal extends React.Component {
                           <input
                             className='form-check-input'
                             type='checkbox'
+                            checked={ann.active}
+                            onChange={() => this.change(ann.ref, !ann.active)}
                           />
                           <span>{' ' + ann.fragment}</span>
                         </label>
@@ -78,7 +93,11 @@ export default class LiqenCreatorModal extends React.Component {
           }
         </ul>
         <div className='modal-footer'>
-          <button type='button' className='btn btn-primary'>
+          <button
+            type='button'
+            className='btn btn-primary'
+            onClick={() => this.props.onSubmit()}
+          >
             Send Liqen
           </button>
         </div>
@@ -94,19 +113,15 @@ LiqenCreatorModal.propTypes = {
       annotations: PropTypes.arrayOf(
         PropTypes.shape({
           ref: PropTypes.string,
-          fragment: PropTypes.string // ,
-          /*
-          target: PropTypes.shape({
-            prefix: PropTypes.string.isRequired,
-            exact: PropTypes.string.isRequired,
-            suffix: PropTypes.string.isRequired
-          })
-          */
+          fragment: PropTypes.string,
+          active: PropTypes.bool
         })
       )
     })
   ),
   visible: PropTypes.bool,
-  onSubmit: PropTypes.func,
-  onCancel: PropTypes.func
+  onSubmit: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  onAdd: PropTypes.func.isRequired,
+  onRemove: PropTypes.func.isRequired
 }
