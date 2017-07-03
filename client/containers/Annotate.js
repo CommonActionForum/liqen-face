@@ -5,6 +5,7 @@ import fetch from 'isomorphic-fetch'
 import Article from '../components/annotators/article-annotator'
 import MultiList from '../components/lists/multi-list'
 import LiqenCreator from '../components/liqen-creator/liqen-creator'
+import CallToAction from '../components/liqen-creator/call-to-action'
 import { createAnnotation,
          createLiqen,
          addAnnotationToLiqen,
@@ -56,18 +57,14 @@ export class Annotate extends React.Component {
               className='d-inline-block align-top my-1'
             />
           </a>
+          <div className='navbar-nav mr-auto' />
+          <CallToAction
+            answer={answer}
+          />
         </nav>
         <div className='container mt-4'>
           <div className='row'>
             <aside className='hidden-md-down col-lg-4 flex-last'>
-              <h3 className='h6 text-uppercase text-muted'>Create your Liqen (your Answer)</h3>
-              <LiqenCreator
-                question={question}
-                answer={answer}
-                onSubmit={onCreateLiqen}
-                onAddAnnotation={onAddAnnotationToLiqen}
-                onRemoveAnnotation={onRemoveAnnotationToLiqen}
-              />
               <MultiList
                 annotations={annotations}
                 liqens={liqens}

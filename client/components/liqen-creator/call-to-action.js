@@ -25,6 +25,7 @@ const Popup = styled.div`
   right: 0;
   position: absolute;
   margin-top: 10px;
+  z-index: 1000;
 `
 
 export default class CallToAction extends React.Component {
@@ -50,7 +51,7 @@ export default class CallToAction extends React.Component {
 
     const completed = this.props.answer
       .filter(a => a.required)
-      .filter(a => a.annotations > 0)
+      .filter(a => a.annotations.length > 0)
       .length
 
     return (
@@ -79,7 +80,7 @@ export default class CallToAction extends React.Component {
                       </div>
                       <div>
                         {
-                          a.annotations > 0
+                          a.annotations.length > 0
                           ? <i
                               className='fa fa-check-circle'
                               aria-hidden={true}
@@ -107,7 +108,7 @@ CallToAction.propTypes = {
     PropTypes.shape({
       tag: PropTypes.string,
       required: PropTypes.bool,
-      annotations: PropTypes.number
+      annotations: PropTypes.array
     })
   )
 }
