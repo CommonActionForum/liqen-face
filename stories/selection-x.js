@@ -2,22 +2,8 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
-import SelectionMarker from '../client/components/annotators/text-annotator/selection-marker'
 import SelectionHandler from '../client/components/annotators/text-annotator/selection-handler'
 import SelectionMultiMarker from '../client/components/annotators/text-annotator/selection-multi-marker'
-
-storiesOf('SelectionMarker', module)
-  .add('Normal behaviour', () => (
-    <SelectionMarker
-      fragment={{
-        prefix: 'Hello ',
-        exact: 'Button',
-        suffix: ''
-      }}
-    >
-      <p>Hello Button</p>
-    </SelectionMarker>
-  ))
 
 storiesOf('SelectionHandler', module)
   .add('Normal behaviour', () => (

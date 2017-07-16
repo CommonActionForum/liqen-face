@@ -560,24 +560,6 @@ exports[`Storyshots SelectionHandler Normal behaviour 1`] = `
 </span>
 `;
 
-exports[`Storyshots SelectionMarker Normal behaviour 1`] = `
-<span>
-  <p>
-    <span>
-      <span>
-        Hello 
-      </span>
-      <mark>
-        Button
-      </mark>
-      <span>
-        
-      </span>
-    </span>
-  </p>
-</span>
-`;
-
 exports[`Storyshots SelectionMultimarker array with 1 fragment 1`] = `
 <p>
   <span
