@@ -21,6 +21,10 @@ router.get('/about', (req, res) => {
   res.render('about')
 })
 
+router.get('/search', (req, res) => {
+  res.render('search')
+})
+
 router.post('/login', urlencodedParser, login, (req, res) => {
   res.redirect('/')
 })
