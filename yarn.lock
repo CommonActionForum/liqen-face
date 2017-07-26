@@ -6888,6 +6888,10 @@ wide-align@^1.1.0:
   dependencies:
     string-width "^1.0.2"
 
+wikidata-sdk@^5.2.2:
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/wikidata-sdk/-/wikidata-sdk-5.2.2.tgz#27dd4b369bd91e464c76fa90b5f2388503e7123f"
+
 window-size@0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/window-size/-/window-size-0.1.0.tgz#5438cd2ea93b202efa3a19fe8887aee7c94f9c9d"

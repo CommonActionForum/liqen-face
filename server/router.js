@@ -9,6 +9,7 @@ import login from './middlewares/login'
 import index from './endpoints/index'
 import parseArticle from './endpoints/parseArticle'
 import annotate from './endpoints/annotate'
+import semantics from './endpoints/semantics'
 
 const router = express.Router()
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
@@ -16,6 +17,7 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false })
 router.get('/', checkSession, index)
 router.get('/parseArticle', parseArticle)
 router.get('/annotate', checkSession, annotate)
+router.get('/search-raw', semantics)
 
 router.get('/about', (req, res) => {
   res.render('about')
