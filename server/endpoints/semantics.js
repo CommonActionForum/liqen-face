@@ -91,7 +91,7 @@ async function getWikidata (annotation) {
       ?country wdt:P1081 ?hdi.
       ?country wdt:P463 ?member_of
 
-      SERVICE wikibase:label { bd:serviceParam wikibase:language "en,ga". }
+      SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
   }
   `
   const url = wdk
@@ -101,6 +101,9 @@ async function getWikidata (annotation) {
     .then(response => response.json())
     .then(wdk.simplifySparqlResults)
     .then(results => {
+      if (results.length === 0) {
+        return {}
+      }
       const gdpCapita = results[0].gdp_capita
       const unemployment = results[0].unemployment
       const hdi = results[0].hdi
