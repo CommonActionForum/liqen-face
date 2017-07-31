@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch'
 import wdk from 'wikidata-sdk'
+import uniqBy from 'lodash/uniqBy'
 
 export default async function semantics (req, res) {
   // 1. Get all the liqens
@@ -83,13 +84,14 @@ async function getWikidata (annotation) {
   // Create the query
   const wikidataEntity = annotation.semantics.wikidataEntity
   const query = `
-    SELECT ?gdp_capita ?hdi ?unemployment ?member_of ?member_ofLabel {
+    SELECT ?gdp_capita ?hdi ?unemployment ?member_of ?member_ofLabel ?language ?languageLabel {
       wd:${wikidataEntity} wdt:P17 ?country.
 
       ?country wdt:P2132 ?gdp_capita.
       ?country wdt:P1198 ?unemployment.
       ?country wdt:P1081 ?hdi.
-      ?country wdt:P463 ?member_of
+      ?country wdt:P463 ?member_of.
+      ?country wdt:P37 ?language
 
       SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
   }
@@ -107,13 +109,15 @@ async function getWikidata (annotation) {
       const gdpCapita = results[0].gdp_capita
       const unemployment = results[0].unemployment
       const hdi = results[0].hdi
-      const memberOf = results.map(r => r.member_of.value)
+      const memberOf = uniqBy(results.map(r => r.member_of), a => a.value)
+      const language = uniqBy(results.map(r => r.language), a => a.value)
 
       return {
         gdpCapita,
         unemployment,
         hdi,
-        memberOf
+        memberOf,
+        language
       }
     })
 
